@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug CBOEPcapParser",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/CBOEPcapParser", // Path to your built executable
+            "args": ["../md-cfe-tsp05-eth7-d-2024-41-ok.pcap"],  // Adjust this to your input file if needed
+            "cwd": "${workspaceFolder}",           // Current working directory
+        }
+    ]
+}
