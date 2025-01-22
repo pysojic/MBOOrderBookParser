@@ -24,7 +24,7 @@ public:
     Order& operator=(const Order& order) = default;
     Order(Order&& order) noexcept = default;
     Order& operator=(Order&& order) noexcept = default;
-    virtual ~Order() noexcept = default;
+    ~Order() noexcept = default;
 
     ID get_id() const noexcept;
     const Symbol& get_symbol() const noexcept;

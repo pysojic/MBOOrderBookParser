@@ -6,6 +6,8 @@
 #pragma once
 
 #include <chrono>
+#include <iostream>
+#include <string_view>
 
 // StopWatch where start and stop can be manually set
 class StopWatch
@@ -32,11 +34,6 @@ private:
 	bool m_isRunning = false;
 };
 
-// Timer 
-#include <iostream>
-#include <chrono>
-#include <string_view>
-
 class Timer {
 public:
     Timer() { Reset(); }
@@ -44,22 +41,26 @@ public:
     void Reset() { m_Start = std::chrono::high_resolution_clock::now(); }
     
     // Elapsed time in seconds
-    float Elapsed() const {
+    float Elapsed() const 
+    {
         return std::chrono::duration<float>(std::chrono::high_resolution_clock::now() - m_Start).count();
     }
 
     // Elapsed time in milliseconds
-    float ElapsedMillis() const {
+    float ElapsedMillis() const 
+    {
         return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - m_Start).count();
     }
 
     // Elapsed time in microseconds
-    float ElapsedMicros() const {
+    float ElapsedMicros() const 
+    {
         return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - m_Start).count();
     }
 
     // Elapsed time in nanoseconds
-    float ElapsedNanos() const {
+    float ElapsedNanos() const 
+    {
         return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - m_Start).count();
     }
 
@@ -71,7 +72,8 @@ class ScopedTimer {
 public:
     ScopedTimer(std::string_view name) : m_Name(name) {}
     
-    ~ScopedTimer() {
+    ~ScopedTimer() 
+    {
         float time = m_Timer.Elapsed(); // Elapsed time in nanoseconds
         std::cout << m_Name << " - " << time << "s\n";
     }
