@@ -10,8 +10,8 @@ public:
     OrderStore() = default;
     OrderStore(const OrderStore& ob) = delete;
     OrderStore& operator=(const OrderStore& ob) = delete;
-    OrderStore(OrderStore&& ob) = default;
-    OrderStore& operator=(OrderStore&& ob) = default;
+    OrderStore(OrderStore&& ob) noexcept = default;
+    OrderStore& operator=(OrderStore&& ob) noexcept = default;
     ~OrderStore() noexcept = default;
 
     [[nodiscard]] Order* add_order(Order::ID id, const Symbol& symbol, Order::Price price, Order::Quantity quantity, Order::Side side);

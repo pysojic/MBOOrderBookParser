@@ -391,7 +391,7 @@ void CBOEPcapParser::process_message(uint64_t pktSeqNum, uint64_t msgSeqNum, con
 
             Very last sequenced message on the feed.  Probably not very useful and can
             be ignored, since it's pretty clear when things shut down based on other
-            data.  Perhaps could be used to double-check data itegrity by verifying that
+            data.  Perhaps could be used to double-check data integrity by verifying that
             it is indeed the last message.
             */
 
@@ -400,7 +400,7 @@ void CBOEPcapParser::process_message(uint64_t pktSeqNum, uint64_t msgSeqNum, con
         }
 
         // ORDER MESSAGES
-        // The following messages do alter book state.  In order correctly build
+        // The following messages do alter book state.  In order to correctly build
         // order books and maintain data integrity, it is essential to process every
         // message correctly.  Even a single missed message will likely result in
         // loss of data integrity.  Appropriate checks may and should be used in

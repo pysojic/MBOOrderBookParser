@@ -71,7 +71,7 @@ struct [[gnu::packed]] PriceLimits // 0xBE
     int64_t UpperPriceLimit;
     int64_t LowerPriceLimit;
 };
-static_assert(sizeof(PriceLimits) == 26, "PriceLimits struct must be 23 bytes");
+static_assert(sizeof(PriceLimits) == 26, "PriceLimits struct must be 26 bytes");
 
 struct [[gnu::packed]] AddOrderLong // 0x21
 {
@@ -160,7 +160,7 @@ struct [[gnu::packed]] ModifyOrderLong // 0x27
         return ss.str();
     }
 };
-static_assert(sizeof(ModifyOrderLong) == 24, "ModifyOrderLong struct must be 16 bytes");
+static_assert(sizeof(ModifyOrderLong) == 24, "ModifyOrderLong struct must be 24 bytes");
 
 struct [[gnu::packed]] ModifyOrderShort // 0x28
 {
