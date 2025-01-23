@@ -28,9 +28,9 @@
      ```
     
 2. Install `CMake`:
-  ```zsh
-   brew install Cmake
-  ```
+   ```zsh
+   brew install cmake
+   ```
 
 3. Install `libpcap` (if not already installed):
    ```zsh
@@ -58,7 +58,7 @@
   ```
 4. Build the project:
   ```zsh
-  cmake -build build
+  cmake --build build
   ```
 
 ### Run the Program
@@ -68,12 +68,13 @@ After a successful build, the executable will be generated in the build director
   ```
 
 ## Project Structure
+```
 MBOOrderBookParser/
 ├── CMakeLists.txt      # Build configuration
 ├── include/            # Header files
 ├── src/                # Source files
 ├── build/              # Build directory (generated after CMake)
 └── README.md           # Project documentation
-
+```
    
 
