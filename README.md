@@ -13,6 +13,7 @@
 - GCC or Clang (optional).
 - [libpcap](https://www.tcpdump.org/) (PCAP library for parsing packet data).
 - CMake (minimum version 3.14).
+- BOOST Libraries (version 1.85+)
 
 ## Build Instructions
 
