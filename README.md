@@ -5,6 +5,9 @@
 ## Features
 - Parses PCAP data captured from the exchange network.
 - Reconstructs MBO (L3) order books.
+- BBO Tracking.
+- Order book visualizer.
+- Arbitrage finder (still WIP).
 - Can exports reconstructed data for further analysis.
 - Highly optimized for performance with `-O3` and `-march=native` compiler flags.
 
