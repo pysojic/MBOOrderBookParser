@@ -68,13 +68,67 @@ After a successful build, the executable will be generated in the build director
   ```
 
 ## Project Structure
+
 ```
 MBOOrderBookParser/
-├── CMakeLists.txt      # Build configuration
-├── include/            # Header files
-├── src/                # Source files
-├── build/              # Build directory (generated after CMake)
-└── README.md           # Project documentation
+
+├── build/ Build directory (generated after CMake)
+
+├── include/
+
+│   ├── CBOEPcapParser.hpp       # Pcap Parser 
+
+│   ├── cfepitch.h               # CFE pitch specs
+
+│   ├── Config.hpp               # Configuration of program options
+
+│   ├── cxxopts.hpp              # Program options parser lib
+
+│   ├── DataExporter.hpp         # Exporter of data (csv, bin, etc)
+
+│   ├── MessageInfo.hpp          # Information struct
+
+│   ├── Order.hpp                # Individual order class 
+
+│   ├── OrderBook.hpp            # Individual order book class 
+
+│   ├── OrderBookManager.hpp     # Order books manager class
+
+│   ├── OrderStore.hpp           # Order objects store class
+
+│   ├── StopWatch.hpp            # Timer
+
+│   ├── Symbol.hpp               # Ticker symbol struct
+
+│   └── ThreadPool.hpp           # Thread pool class
+
+├── misc/ 
+
+│   └── cfe-pitch.lua            # lua script dissector for Wireshark 
+
+├── ref/ 
+
+│   └── CFE Multicast PITCH Spec v1.2.8 2024-08-09.pdf        # CFE Pitch specs 
+
+├── src/
+
+│   ├── CBOEPcapParser.cpp       # Pcap Parser implementation
+
+│   ├── DataExporter.cpp         # Exporter of data (csv, bin, etc) implementation
+
+│   ├── main.cpp                 # Program entry point
+
+│   ├── Order.cpp                # Individual order class implementation
+
+│   ├── OrderBook.cpp            # Individual order book class implementation
+
+│   ├── OrderBookManager.cpp     # Order books manager class implementation
+
+│   ├── OrderStore.cpp           # Order objects store class implementation
+
+│   ├── StopWatch.cpp            # Timer implementation
+
+│   └── ThreadPool.cpp           # Thread pool class implementation
 ```
    
 
