@@ -102,10 +102,6 @@ MBOOrderBookParser/
 
 │   └── ThreadPool.hpp           # Thread pool class
 
-├── misc/ 
-
-│   └── cfe-pitch.lua            # lua script dissector for Wireshark 
-
 ├── ref/ 
 
 │   └── CFE Multicast PITCH Spec v1.2.8 2024-08-09.pdf        # CFE Pitch specs 
