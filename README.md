@@ -1,6 +1,6 @@
 # MBO PCAP Parser
 
-**MBO PCAP Parser** is a high-performance C++ application designed to parse PCAP files from the Exchange (current implementation uses the CBOE Future Exchange), reconstruct MBO order books, and can be used to identify arbitrage opportunities and trading signals. It is optimized for macOS and Unix-like systems and uses CMake for build management.
+**MBO PCAP Parser** is a high-performance C++ application designed to parse PCAP files from the Exchange (current implementation is based on the CBOE Future Exchange), reconstruct MBO order books, and can be used to identify arbitrage opportunities and trading signals. It is optimized for macOS and Unix-like systems and uses CMake for build management.
 
 ## Features
 - Parses PCAP data captured from the exchange network.
