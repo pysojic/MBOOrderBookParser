@@ -104,7 +104,7 @@ MBOOrderBookParser/
 
 │   ├── Symbol.hpp               # Ticker symbol struct
 
-│   └── ThreadPool.hpp           # Thread pool class
+│   └── ThreadPool.hpp           # Thread pool class (not being used in current implementation)
 
 ├── ref/ 
 
