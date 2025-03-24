@@ -150,14 +150,12 @@ void OrderBook::add_order(Order::ID id, Order::Price price, Order::Quantity quan
 
     auto newBBO = get_bbo();
 
-    if (currentBBO != newBBO) // Check if the BBO is in a valid state by checking the quantity
+    // Check if the BBO option is set and if the added order has affected the BBO
+    if (Config::getInstance().bbo() && currentBBO != newBBO)
     {
-        if (Config::getInstance().bbo())
-        {
-            const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
-            m_dataExporter->store_BBO_records('A', m_symbol,  
-                    bidPx, bidQty, askPx, askQty, m_tradingStatus);
-        }
+        const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
+        m_dataExporter->store_BBO_records('A', m_symbol,  
+                bidPx, bidQty, askPx, askQty, m_tradingStatus);
     }
 }
 
@@ -204,14 +202,12 @@ void OrderBook::cancel_order(Order::ID order_id)
 
     auto newBBO = get_bbo();
 
-    if (currentBBO != newBBO) // Check if the BBO is in a valid state
+    // Check if the BBO option is set and if the added order has affected the BBO
+    if (Config::getInstance().bbo() && currentBBO != newBBO)
     {
-        if (Config::getInstance().bbo())
-        {
-            const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
-            m_dataExporter->store_BBO_records('D', m_symbol, 
-                    bidPx, bidQty, askPx, askQty, m_tradingStatus);
-        }
+        const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
+        m_dataExporter->store_BBO_records('D', m_symbol, 
+                bidPx, bidQty, askPx, askQty, m_tradingStatus);
     }
 
     m_orderstore->erase(order_id);
@@ -241,14 +237,12 @@ void OrderBook::modify_order(Order::ID order_id, Order::Price new_price, Order::
 
     auto newBBO = get_bbo();
 
-    if (currentBBO != newBBO) // Check if the BBO is in a valid state
+    // Check if the BBO option is set and if the added order has affected the BBO
+    if (Config::getInstance().bbo() && currentBBO != newBBO)
     {
-        if (Config::getInstance().bbo())
-        {
-            const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
-                m_dataExporter->store_BBO_records('M', m_symbol, 
-                    bidPx, bidQty, askPx, askQty, m_tradingStatus);
-        }
+        const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
+            m_dataExporter->store_BBO_records('M', m_symbol, 
+                bidPx, bidQty, askPx, askQty, m_tradingStatus);
     }
 }
 
@@ -279,14 +273,12 @@ void OrderBook::reduce_order(Order::ID order_id, Order::Quantity cxl_qty)
 
     auto newBBO = get_bbo();
 
-    if (currentBBO != newBBO) // Check is the BBO is in a valid state
+    // Check if the BBO option is set and if the added order has affected the BBO
+    if (Config::getInstance().bbo() && currentBBO != newBBO) 
     {
-        if (Config::getInstance().bbo())
-        {
-            const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
-            m_dataExporter->store_BBO_records('R', m_symbol, 
-                    bidPx, bidQty, askPx, askQty, m_tradingStatus);
-        }
+        const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
+        m_dataExporter->store_BBO_records('R', m_symbol, 
+                bidPx, bidQty, askPx, askQty, m_tradingStatus);
     }
 }
 
@@ -361,14 +353,12 @@ void OrderBook::execute_order(Order::ID order_id, Order::Quantity executed_qty)
 
     auto newBBO = get_bbo();
 
-    if (currentBBO != newBBO) // Check if the BBO is in a valid state
+    // Check if the BBO option is set and if the added order has affected the BBO
+    if (Config::getInstance().bbo() && currentBBO != newBBO)
     {
-        if (Config::getInstance().bbo())
-        {
-            const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
-            m_dataExporter->store_BBO_records('E', m_symbol, 
-                    bidPx, bidQty, askPx, askQty, m_tradingStatus);
-        }
+        const auto& [bidPx, bidQty, askPx, askQty] = newBBO;
+        m_dataExporter->store_BBO_records('E', m_symbol, 
+                bidPx, bidQty, askPx, askQty, m_tradingStatus);
     }
 }
 
@@ -391,6 +381,8 @@ const Order& OrderBook::find_order(Order::ID order_id) const
         throw std::invalid_argument("Order {} not found" + order_id);
 }
 
+// The following functions are required to avoid double counting BBO entries when adding/modifying/reducing an order
+// They are only being used internally and should not be made visible to the user
 void OrderBook::add_internal(Order::ID id, Order::Price price, Order::Quantity quantity, Order::Side side) noexcept
 {
     Order* order_ptr = m_orderstore->add_order(id, m_symbol, price, quantity, side);
